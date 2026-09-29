@@ -1,0 +1,39 @@
+# Júlia Letícia — Desenvolvimento Web & Landing Pages de Alta Conversão
+
+> Desenvolvedora web freelancer especializada na criação estratégica de landing pages e sites institucionais de alto padrão para empresas e profissionais autônomos. Atendimento direto e personalizado de Cuiabá/MT para todo o Brasil.
+
+## Informações Gerais
+- **Nome:** Júlia Letícia (@devjulia)
+- **Atuação:** Desenvolvimento Front-end, Landing Pages, Sites Institucionais e Otimização de Conversão
+- **Localização:** Cuiabá, Mato Grosso — Atendimento 100% remoto para todo o Brasil
+- **Contato WhatsApp:** +55 65 98414-7482
+- **Website Oficial:** https://devjulialeticia.vercel.app
+- **LinkedIn:** https://linkedin.com/in/juliawlett/
+- **GitHub:** https://github.com/juliawlett
+- **E-mail:** dev.julialeticia@gmail.com
+
+---
+
+## Diferenciais Estratégicos
+1. **Design Autoral e Exclusivo:** Cada site é desenhado do zero para a identidade da marca, sem templates genéricos saturados.
+2. **Alta Performance (Google PageSpeed 95+):** Código limpo e moderno em Next.js e React que carrega em menos de 1 segundo.
+3. **Engenharia de Conversão:** Hierarquia visual projetada para guiar o visitante diretamente ao botão de ação (WhatsApp ou formulário).
+4. **1º Ano de Domínio .com.br Incluso:** Bônus em todos os planos com configuração técnica completa de DNS e SSL.
+5. **Atendimento Direto 1:1:** O cliente conversa diretamente com a desenvolvedora do projeto, sem intermediários.
+
+---
+
+## Planos e Investimento
+- **Plano Essencial (Landing Page):** De R$ 1.000 por R$ 700. Entrega em 3 a 5 dias úteis. Página única com até 5 seções estratégicas, 100% responsiva, botão WhatsApp, SEO estrutural e domínio .com.br incluso.
+- **Plano Profissional (Mais Escolhido):** De R$ 1.600 por R$ 1.100. Entrega em 5 a 8 dias úteis. Até 4 páginas estruturadas, formulário integrado, SEO avançado e domínio .com.br incluso.
+- **Plano Avançado (Catálogo / Multi-serviços):** De R$ 2.600 por R$ 1.600. Entrega em 8 a 15 dias úteis. Até 8 páginas, catálogo de serviços/produtos e integração externa.
+
+---
+
+## Cases Reais de Sucesso Publicados
+- **DB Cursos & SST:** Landing page de alta conversão para cursos profissionalizantes de máquinas pesadas com duplo funil B2B/B2C. PageSpeed 98/100. URL: https://dbcursos.vercel.app/
+- **Animália Pet Care:** Site institucional acolhedor para clínica veterinária 24h e pet shop. PageSpeed 99/100. URL: https://animalia-demo.vercel.app/
+- **Guilherme Interiores:** Portfólio editorial de alto padrão para estúdio de design de interiores e arquitetura. PageSpeed 97/100. URL: https://guilhermeinteriores.vercel.app/
+- **TP Veículos:** Landing page comercial de alta conversão para revenda de seminovos. PageSpeed 98/100. URL: https://tpveiculos.vercel.app/
+- **Skill Lan:** Site institucional para centro de esportes eletrônicos e lan house gamer. PageSpeed 99/100. URL: https://skilllan.vercel.app/
+- **Brasa 65:** Cardápio digital interativo com carrinho e pedido integrado ao WhatsApp para hamburgueria artesanal. PageSpeed 98/100. URL: https://hamburgueria-one-zeta.vercel.app/

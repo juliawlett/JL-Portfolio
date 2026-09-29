@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-inter: "Inter", sans-serif;
+  --font-dm: "DM Sans", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #f8fafc;
+}
+
+html.dark {
+  background-color: #0f1218;
+}
+
+body {
+  background-color: #f8fafc;
+  color: #0f172a;
+  font-family: var(--font-inter), sans-serif;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+html.dark body {
+  background-color: #0f1218;
+  color: #f8fafc;
+}
+
+/* Ritmo visual entre as seções da página */
+.section-base {
+  background-color: #f8fafc;
+}
+
+.section-surface {
+  background-color: rgba(241, 245, 249, 0.72);
+}
+
+.section-accent {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.1), transparent 42%),
+    linear-gradient(180deg, #f8fafc 0%, #f5f3ff 52%, #f8fafc 100%);
+}
+
+html.dark .section-base {
+  background-color: #0f1218;
+}
+
+html.dark .section-surface {
+  background-color: #171b24;
+}
+
+html.dark .section-accent {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.14), transparent 42%),
+    linear-gradient(180deg, #0f1218 0%, #151326 52%, #0f1218 100%);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #272f3d;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7c3aed;
+}
+
+/* Cartões com alto contraste e acabamento limpo */
+.card-clean {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
+html.dark .card-clean {
+  background-color: #171b24;
+  border: 1px solid #262d3d;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+}
+
+.card-clean-hover:hover {
+  transform: translateY(-3px);
+  border-color: #a78bfa;
+  box-shadow: 0 10px 25px -4px rgba(124, 58, 237, 0.12);
+}
+
+/* Letreiro em Loop Suave (Marquee) */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-scroll {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 24s linear infinite;
+}
+
+.animate-marquee-scroll:hover {
+  animation-play-state: paused;
+}
+
+.mask-marquee-edges {
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+
+html.dark .card-clean-hover:hover {
+  border-color: rgba(167, 139, 250, 0.4);
+  box-shadow: 0 12px 30px -4px rgba(0, 0, 0, 0.6);
+}
