@@ -65,10 +65,10 @@ export const metadata: Metadata = {
     siteName: `${siteConfig.profile.name} Portfólio`,
     images: [
       {
-        url: "/images/new-projects/db-cursos-desktop.png",
+        url: "/og-devjulia.png",
         width: 1200,
         height: 630,
-        alt: "Portfólio Júlia Letícia - Desenvolvimento Web e Landing Pages",
+        alt: "@devjulia — Desenvolvedora Web, Sites, Landing Pages e Soluções Digitais",
       },
     ],
   },
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
     title: `${siteConfig.profile.name} · Sites e Landing Pages Profissionais`,
     description:
       "Sites autorais, ultra-rápidos e focados em resultado para empresas e profissionais.",
-    images: ["/images/new-projects/db-cursos-desktop.png"],
+    images: ["/og-devjulia.png"],
   },
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
