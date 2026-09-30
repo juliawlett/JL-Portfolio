@@ -16,7 +16,7 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
-const baseUrl = "https://devjulialeticia.vercel.app";
+const baseUrl = "https://devjulia.com.br";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
