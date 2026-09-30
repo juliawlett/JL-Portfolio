@@ -20,20 +20,32 @@ export default function InitialLoader() {
       completed += 1;
       if (!cancelled) setProgress(Math.min(96, Math.round((completed / total) * 100)));
     };
-    const imagePromises = criticalImages.map((image) => {
-      if (image.complete) return image.decode?.().catch(() => undefined).then(advance);
-      return new Promise<void>((resolve) => {
-        const finish = () => {
-          image.decode?.().catch(() => undefined).finally(() => { advance(); resolve(); });
-        };
-        image.addEventListener("load", finish, { once: true });
-        image.addEventListener("error", finish, { once: true });
-      });
-    });
+    const imagePromises = criticalImages.map((image) => new Promise<void>((resolve) => {
+      let finished = false;
+      const finish = () => {
+        if (finished) return;
+        finished = true;
+        image.removeEventListener("load", finish);
+        image.removeEventListener("error", finish);
+        advance();
+        resolve();
+      };
+
+      image.addEventListener("load", finish, { once: true });
+      image.addEventListener("error", finish, { once: true });
+
+      // Imagens vindas do cache podem não emitir load após a hidratação.
+      if (image.complete) finish();
+      else window.setTimeout(finish, 1500);
+    }));
     const fontsReady = document.fonts?.ready.then(advance) ?? Promise.resolve().then(advance);
     const pageReady = new Promise<void>((resolve) => {
       if (document.readyState === "complete") resolve();
-      else window.addEventListener("load", () => resolve(), { once: true });
+      else {
+        const finish = () => resolve();
+        window.addEventListener("load", finish, { once: true });
+        window.setTimeout(finish, 1500);
+      }
     }).then(advance);
     Promise.all([...imagePromises, fontsReady, pageReady]).then(() => {
       if (cancelled) return;
