@@ -104,7 +104,6 @@ export default function About() {
                 src="/images/foto-julia.png"
                 alt="Júlia Letícia - Desenvolvedora Web & UI/UX"
                 fill
-                priority
                 className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                 sizes="(max-width: 1024px) 100vw, 420px"
               />
@@ -244,4 +243,3 @@ export default function About() {
     </section>
   );
 }
-

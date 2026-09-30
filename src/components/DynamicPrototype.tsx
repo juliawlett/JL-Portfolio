@@ -47,27 +47,14 @@ export default function DynamicPrototype() {
           }}
           className="absolute overflow-hidden bg-black rounded-t-[4px]"
         >
-          {projects.map((proj, idx) => {
-            const isActive = currentIndex === idx;
-            return (
-              <div
-                key={`screen-${proj.slug}`}
-                className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-                  isActive ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
-                }`}
-              >
-                <Image
-                  src={proj.image}
-                  alt={`Site de ${proj.title} no MacBook`}
-                  fill
-                  priority={idx === 0}
-                  unoptimized
-                  className="object-cover object-top"
-                  sizes="(max-width: 1024px) 100vw, 850px"
-                />
-              </div>
-            );
-          })}
+          <Image
+            src={currentProject.image}
+            alt={`Site de ${currentProject.title} no MacBook`}
+            fill
+            priority
+            className="object-cover object-top"
+            sizes="(max-width: 1024px) 100vw, 850px"
+          />
         </div>
 
         {/* MOLDURA TRANSPARENTE OFICIAL APPLE MACBOOK PRO 16" */}
@@ -76,7 +63,6 @@ export default function DynamicPrototype() {
           alt="Apple MacBook Pro 16 Mockup"
           fill
           priority
-          unoptimized
           className="pointer-events-none select-none z-10 object-contain"
         />
 
@@ -94,28 +80,14 @@ export default function DynamicPrototype() {
             }}
             className="absolute overflow-hidden rounded-[11%] bg-slate-950"
           >
-            {projects.map((proj, idx) => {
-              const isActive = currentIndex === idx;
-              const mImg = proj.imageMobile || proj.image;
-              return (
-                <div
-                  key={`mobile-${proj.slug}`}
-                  className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-                    isActive ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
-                  }`}
-                >
-                  <Image
-                    src={mImg}
-                    alt={`Site de ${proj.title} no iPhone`}
-                    fill
-                    priority={idx === 0}
-                    unoptimized
-                    className="object-cover object-top"
-                    sizes="(max-width: 640px) 100px, 160px"
-                  />
-                </div>
-              );
-            })}
+            <Image
+              src={currentProject.imageMobile || currentProject.image}
+              alt={`Site de ${currentProject.title} no iPhone`}
+              fill
+              priority
+              className="object-cover object-top"
+              sizes="(max-width: 640px) 100px, 160px"
+            />
 
             {/* BARRA INFERIOR DE GESTO DA APPLE (HOME INDICATOR) */}
             <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-10 sm:w-14 h-0.5 sm:h-1 bg-white/35 rounded-full z-20 pointer-events-none" />
@@ -127,7 +99,6 @@ export default function DynamicPrototype() {
             alt="Apple iPhone Mockup"
             fill
             priority
-            unoptimized
             className="pointer-events-none select-none z-10 object-contain"
           />
         </div>

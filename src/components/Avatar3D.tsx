@@ -60,7 +60,6 @@ export default function Avatar3D() {
               src="/images/foto-julia.png"
               alt="Júlia Letícia - Desenvolvedora Web & Web Designer"
               fill
-              priority
               className="object-cover object-top transform transition-transform duration-700 group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, 400px"
             />
