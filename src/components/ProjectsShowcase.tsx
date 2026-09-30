@@ -5,24 +5,26 @@ import Link from "next/link";
 import Image from "next/image";
 import { siteConfig } from "@/data/config";
 import { Project } from "@/types";
-import { ExternalLink, ArrowRight, Gauge, Clock, Layers, Sparkles } from "lucide-react";
+import { ExternalLink, ArrowRight, Gauge, Layers, Sparkles, ChevronDown, ChevronUp } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function ProjectsShowcase() {
   const [activeCategory, setActiveCategory] = useState<string>("Todos");
+  const [showAll, setShowAll] = useState(false);
 
-  const categories = [
-    "Todos",
-    "Serviços & B2B",
-    "Luxo & Varejo",
-    "Gastronomia & Lazer",
-    "Saúde & Bem-Estar",
-  ];
+  const categories = ["Todos", ...Array.from(new Set(siteConfig.projects.map((project) => project.category)))];
 
   const filteredProjects =
     activeCategory === "Todos"
       ? siteConfig.projects
       : siteConfig.projects.filter((p) => p.category === activeCategory);
+  const visibleProjects = showAll ? filteredProjects : filteredProjects.slice(0, 6);
+  const hiddenProjectsCount = Math.max(filteredProjects.length - 6, 0);
+
+  const selectCategory = (category: string) => {
+    setActiveCategory(category);
+    setShowAll(false);
+  };
 
   return (
     <section id="cases" className="section-base py-20 relative">
@@ -49,20 +51,19 @@ export default function ProjectsShowcase() {
           </p>
 
           {/* Abas de Filtros por Categoria */}
-          <div className="flex items-center justify-center gap-2 sm:gap-3 flex-wrap mt-8">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
             {categories.map((cat) => (
               <button
                 key={cat}
                 type="button"
-                onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+                onClick={() => selectCategory(cat)}
+                className={`rounded-xl px-4 py-2 text-xs font-semibold transition-all cursor-pointer sm:text-sm ${
                   activeCategory === cat
                     ? "bg-brand-600 text-white shadow-md shadow-brand-600/25 scale-105"
                     : "bg-white dark:bg-dark-card text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-white border border-light-border dark:border-dark-border"
                 }`}
               >
-                {cat}
-                {cat === "Todos" && ` (${siteConfig.projects.length})`}
+                {cat} ({cat === "Todos" ? siteConfig.projects.length : siteConfig.projects.filter((project) => project.category === cat).length})
               </button>
             ))}
           </div>
@@ -70,7 +71,7 @@ export default function ProjectsShowcase() {
 
         {/* Grid de Cards dos Projetos com Stagger */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {filteredProjects.map((project: Project, index: number) => (
+          {visibleProjects.map((project: Project, index: number) => (
             <motion.article
               key={project.slug}
               initial={{ opacity: 0, y: 30 }}
@@ -106,13 +107,23 @@ export default function ProjectsShowcase() {
 
                   {/* Imagem Real do Print com Efeito Hover */}
                   <div className="relative w-full h-52 sm:h-56 overflow-hidden bg-slate-200 dark:bg-slate-800">
-                    <Image
-                      src={project.image}
-                      alt={`Print oficial do site ${project.title}`}
-                      fill
-                      className="object-cover object-top transform group-hover:scale-105 transition-transform duration-500 ease-out"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
+                    <picture className="absolute inset-0 block">
+                      {project.imageMobile && (
+                        <source
+                          media="(max-width: 767px)"
+                          srcSet={`/_next/image?url=${encodeURIComponent(project.imageMobile)}&w=640&q=70`}
+                        />
+                      )}
+                      <Image
+                        src={project.image}
+                        alt={`Print oficial do site ${project.title}`}
+                        fill
+                        priority={index === 0}
+                        quality={70}
+                        className="object-cover object-top transform group-hover:scale-105 transition-transform duration-500 ease-out"
+                        sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1200px) 50vw, 33vw"
+                      />
+                    </picture>
 
                     {/* Badges Flutuantes sobre a Imagem */}
                     <div className="absolute top-2 left-2 flex items-center gap-1.5">
@@ -180,6 +191,20 @@ export default function ProjectsShowcase() {
             </motion.article>
           ))}
         </div>
+
+        {filteredProjects.length > 6 && (
+          <div className="mt-10 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setShowAll((current) => !current)}
+              aria-expanded={showAll}
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-brand-200 bg-brand-50 px-6 py-3 text-sm font-bold text-brand-700 shadow-sm transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:bg-brand-100 dark:border-brand-900/60 dark:bg-brand-950/40 dark:text-brand-300 dark:hover:bg-brand-950/70"
+            >
+              <span>{showAll ? "Mostrar menos" : `Exibir mais ${hiddenProjectsCount} cases`}</span>
+              {showAll ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

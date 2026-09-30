@@ -2,7 +2,13 @@ export interface Project {
   slug: string;
   title: string;
   client: string;
-  category: "Serviços & B2B" | "Luxo & Varejo" | "Gastronomia & Lazer" | "Saúde & Bem-Estar";
+  category:
+    | "Serviços & B2B"
+    | "Luxo & Varejo"
+    | "Gastronomia & Lazer"
+    | "Saúde & Bem-Estar"
+    | "Energia & Sustentabilidade"
+    | "Tecnologia & Entretenimento";
   pageType:
     | "Landing page de alta conversão"
     | "Site institucional de autoridade"
