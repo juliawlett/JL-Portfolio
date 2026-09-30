@@ -14,6 +14,7 @@ import {
   Check,
   ChevronRight,
 } from "lucide-react";
+import { AnimatedGauge, AnimatedMetric } from "./AnimatedMetric";
 
 interface CaseStudyTemplateProps {
   project: Project;
@@ -249,11 +250,11 @@ export default function CaseStudyTemplate({
               <div className="flex items-center gap-4 text-xs font-semibold text-slate-500 dark:text-slate-400">
                 <span className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400">
                   <Gauge className="w-4 h-4" />
-                  Lighthouse {project.metrics.pageSpeed}
+                  Lighthouse <AnimatedMetric value={project.metrics.pageSpeed} />
                 </span>
                 <span className="hidden sm:flex items-center gap-1.5">
                   <Clock className="w-4 h-4 text-brand-600 dark:text-brand-400" />
-                  Carga em {project.metrics.loadTime}
+                  Carga em <AnimatedMetric value={project.metrics.loadTime} />
                 </span>
               </div>
             </div>
@@ -339,21 +340,10 @@ export default function CaseStudyTemplate({
                         className="text-slate-100 dark:text-white/[0.08]"
                         fill="transparent"
                       />
-                      <circle
-                        cx="32"
-                        cy="32"
-                        r="27"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                        strokeDasharray={169.6}
-                        strokeDashoffset={169.6 - (169.6 * Math.min(item.score, 100)) / 100}
-                        strokeLinecap="round"
-                        className="text-emerald-500"
-                        fill="transparent"
-                      />
+                      <AnimatedGauge value={item.score} delay={0.08} />
                     </svg>
                     <span className="absolute font-heading text-xl font-extrabold text-emerald-600 dark:text-emerald-400">
-                      {item.score}
+                      <AnimatedMetric value={String(item.score)} />
                     </span>
                   </div>
 
@@ -589,7 +579,7 @@ export default function CaseStudyTemplate({
                       </div>
                       <div className="absolute bottom-2 right-2 flex items-center gap-1 px-2 py-0.5 rounded-md bg-white/95 dark:bg-dark-surface/95 backdrop-blur-md text-[10px] font-semibold text-emerald-600 dark:text-emerald-400 border border-slate-200 dark:border-white/10 shadow-sm">
                         <Gauge className="w-3 h-3" />
-                        <span>{other.metrics.pageSpeed}</span>
+                        <AnimatedMetric value={other.metrics.pageSpeed} />
                       </div>
                     </div>
                   </div>

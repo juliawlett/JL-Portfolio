@@ -7,9 +7,9 @@ import Footer from "@/components/Footer";
 import CaseStudyTemplate from "@/components/CaseStudyTemplate";
 
 interface Props {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export const dynamicParams = false;
@@ -20,8 +20,9 @@ export function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({ params }: Props): Metadata {
-  const project = siteConfig.projects.find((p) => p.slug === params.slug);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const project = siteConfig.projects.find((p) => p.slug === slug);
   if (!project) {
     return {
       title: "Projeto não encontrado",
@@ -29,7 +30,7 @@ export function generateMetadata({ params }: Props): Metadata {
     };
   }
 
-  const url = `https://devjulialeticia.vercel.app/projetos/${params.slug}`;
+  const url = `https://devjulialeticia.vercel.app/projetos/${slug}`;
 
   return {
     title: `${project.title} · Case de Sucesso`,
@@ -65,8 +66,9 @@ export function generateMetadata({ params }: Props): Metadata {
   };
 }
 
-export default function ProjectPage({ params }: Props) {
-  const project = siteConfig.projects.find((p) => p.slug === params.slug);
+export default async function ProjectPage({ params }: Props) {
+  const { slug } = await params;
+  const project = siteConfig.projects.find((p) => p.slug === slug);
 
   if (!project) {
     notFound();

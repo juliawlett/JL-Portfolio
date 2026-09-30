@@ -80,9 +80,9 @@ export default function Services() {
           </p>
         </motion.div>
 
-        {/* Abas Horizontais com Muito Respiro e Ergonomia */}
-        <div className="flex justify-center mb-8 sm:mb-10 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none">
-          <div className="inline-flex p-1.5 rounded-2xl bg-white dark:bg-dark-surface border border-light-border dark:border-white/[0.08] shadow-sm gap-1.5">
+        {/* Abas em grade responsiva: 2x2 até tablet e linha única no desktop */}
+        <div className="mb-8 flex justify-center sm:mb-10">
+          <div className="grid w-full max-w-5xl grid-cols-2 gap-1.5 rounded-2xl border border-light-border bg-white p-1.5 shadow-sm dark:border-white/[0.08] dark:bg-dark-surface lg:grid-cols-4">
             {tabs.map((tab) => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
@@ -91,7 +91,7 @@ export default function Services() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`relative flex items-center gap-2.5 px-4 sm:px-5 py-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 whitespace-nowrap cursor-pointer ${
+                  className={`relative flex min-h-14 items-center justify-center gap-2 px-2 py-3 text-center rounded-xl text-[11px] sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
                     isActive
                       ? "bg-brand-600 text-white shadow-md shadow-brand-600/20"
                       : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.04]"
@@ -115,7 +115,7 @@ export default function Services() {
         </div>
 
         {/* Painel Central com Layout Split e Amplo Espaçamento */}
-        <div className="card-clean rounded-3xl p-6 sm:p-10 lg:p-12 border border-light-border dark:border-white/[0.08] bg-white dark:bg-dark-surface shadow-sm relative overflow-hidden">
+          <div className="card-clean min-w-0 rounded-3xl p-4 sm:p-10 lg:p-12 border border-light-border dark:border-white/[0.08] bg-white dark:bg-dark-surface shadow-sm relative overflow-hidden">
           {/* Filete luminoso superior sutil */}
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-500/30 to-transparent pointer-events-none" />
 

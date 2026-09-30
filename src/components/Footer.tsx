@@ -17,7 +17,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-light-border dark:border-dark-border bg-white dark:bg-dark-bg transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="py-8 flex flex-col lg:flex-row lg:items-center justify-between gap-7">
+        <div className="grid grid-cols-1 gap-6 py-8 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center lg:flex lg:flex-row lg:justify-between lg:gap-7">
           <div className="flex items-center gap-3.5 min-w-fit">
             <Link
               href="/"
@@ -36,8 +36,8 @@ export default function Footer() {
             </div>
           </div>
 
-          <nav aria-label="Navegação do rodapé">
-            <ul className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-medium text-slate-600 dark:text-slate-400">
+          <nav aria-label="Navegação do rodapé" className="sm:col-span-2 sm:row-start-2 lg:col-auto">
+            <ul className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-medium text-slate-600 dark:text-slate-400 sm:justify-center lg:justify-start">
               <li><a href="/#cases" className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Cases</a></li>
               <li><a href="/#servicos" className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Serviços</a></li>
               <li><a href="/#planos" className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Planos</a></li>
@@ -50,7 +50,7 @@ export default function Footer() {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex w-fit items-center gap-2 rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-bold text-white shadow-sm shadow-brand-600/20 transition-colors hover:bg-brand-700"
+            className="inline-flex w-fit items-center gap-2 rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-bold text-white shadow-sm shadow-brand-600/20 transition-colors hover:bg-brand-700 sm:col-start-2 sm:row-start-1 sm:justify-self-end lg:justify-self-auto"
           >
             <MessageCircle className="size-4" />
             Falar no WhatsApp

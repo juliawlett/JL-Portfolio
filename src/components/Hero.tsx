@@ -38,7 +38,7 @@ export default function Hero() {
             initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, ease: [0.32, 0.72, 0, 1] }}
-            className="max-w-xl text-center lg:text-left"
+            className="mx-auto max-w-xl text-center lg:mx-0 lg:text-left"
           >
             <span className="inline-flex items-center gap-2 rounded-full border border-brand-200/80 bg-white/75 px-3.5 py-1.5 text-xs font-bold tracking-wide text-brand-700 shadow-sm dark:border-brand-900/60 dark:bg-dark-card/70 dark:text-brand-300">
               <span className="relative flex h-2 w-2">
@@ -53,7 +53,7 @@ export default function Hero() {
               <span className="text-brand-600 dark:text-brand-400">encontrado — e escolhido.</span>
             </h1>
 
-            <p className="mt-6 max-w-[34rem] text-base leading-relaxed text-slate-600 sm:text-lg lg:mx-0 dark:text-slate-300">
+            <p className="mx-auto mt-6 max-w-[34rem] text-base leading-relaxed text-slate-600 sm:text-lg lg:mx-0 dark:text-slate-300">
               <strong className="block text-slate-900 dark:text-white">Site profissional. Claro, rápido e feito para vender.</strong>
               <span className="mt-2 block">Transformo o que você faz em uma presença digital que transmite confiança, valoriza sua marca e facilita a chegada de novos clientes.</span>
             </p>

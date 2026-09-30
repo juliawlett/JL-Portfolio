@@ -166,8 +166,8 @@ export default function AntiTemplate() {
         </motion.div>
 
         {/* Seletor de Pilares Interativos */}
-        <div className="flex justify-center mb-10 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none">
-          <div className="inline-flex p-1.5 rounded-2xl bg-slate-100 dark:bg-dark-surface border border-light-border dark:border-dark-border shadow-inner gap-1">
+        <div className="mb-10 flex justify-center">
+          <div className="grid w-full max-w-5xl grid-cols-2 gap-1.5 rounded-2xl border border-light-border bg-slate-100 p-1.5 shadow-inner dark:border-dark-border dark:bg-dark-surface lg:grid-cols-4">
             {pillars.map((pillar) => {
               const Icon = pillar.icon;
               const isActive = activeTab === pillar.id;
@@ -176,7 +176,7 @@ export default function AntiTemplate() {
                 <button
                   key={pillar.id}
                   onClick={() => setActiveTab(pillar.id)}
-                  className={`relative flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 whitespace-nowrap cursor-pointer ${
+                  className={`relative flex min-h-14 items-center justify-center gap-2 px-2 py-2.5 text-center rounded-xl text-[11px] sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
                     isActive
                       ? "text-slate-900 dark:text-white shadow-sm bg-white dark:bg-dark-bg"
                       : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"

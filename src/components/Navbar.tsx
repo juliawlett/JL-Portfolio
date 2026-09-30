@@ -121,7 +121,7 @@ export default function Navbar() {
           </Link>
 
           {/* Links de Navegação Desktop (Tópicos refinados com cápsula moderna e 100% estável) */}
-          <nav className="hidden md:flex items-center gap-1 bg-slate-100/70 dark:bg-white/[0.04] p-1.5 rounded-full border border-slate-200/70 dark:border-white/[0.06] backdrop-blur-sm">
+          <nav className="hidden lg:flex items-center gap-1 bg-slate-100/70 dark:bg-white/[0.04] p-1.5 rounded-full border border-slate-200/70 dark:border-white/[0.06] backdrop-blur-sm">
             {navLinks.map((link) => {
               const sectionId = link.sectionId;
               const isActive = activeSection === sectionId;

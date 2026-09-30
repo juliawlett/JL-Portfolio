@@ -168,8 +168,8 @@ Vi as condições no seu portfólio e gostaria de verificar sua disponibilidade 
 
           {/* Stepper Fino com Indicadores e Título do Passo */}
           <div className="mb-8 pb-6 border-b border-slate-100 dark:border-white/[0.06]">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
-              <div className="flex items-center gap-2.5">
+            <div className="mb-4 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+              <div className="flex min-w-0 items-center gap-2.5">
                 <span className="inline-flex items-center justify-center px-3 py-1 rounded-full bg-brand-50 dark:bg-brand-950/60 border border-brand-200 dark:border-brand-900/40 text-brand-700 dark:text-brand-300 font-bold text-[11px] tracking-wide">
                   Etapa {step} de 3
                 </span>
@@ -179,7 +179,7 @@ Vi as condições no seu portfólio e gostaria de verificar sua disponibilidade 
               </div>
 
               {/* Indicadores de Passos em Pill e Botão Rápido WhatsApp */}
-              <div className="flex items-center gap-3 self-start sm:self-auto flex-wrap sm:flex-nowrap">
+              <div className="flex w-full items-center justify-between gap-3 lg:w-auto lg:justify-start">
                 <div className="flex items-center gap-2">
                   {[
                     { num: 1, label: "Solução" },
@@ -218,7 +218,7 @@ Vi as condições no seu portfólio e gostaria de verificar sua disponibilidade 
                   })}
                 </div>
 
-                <div className="hidden sm:block w-px h-4 bg-slate-200 dark:bg-white/10" />
+                <div className="hidden lg:block w-px h-4 bg-slate-200 dark:bg-white/10" />
 
                 {/* Botão Rápido de WhatsApp Direto */}
                 <a

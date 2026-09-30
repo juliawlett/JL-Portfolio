@@ -1,71 +1,76 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { animate, motion, useInView, useReducedMotion } from "framer-motion";
 
-interface AnimatedMetricProps {
-  value: string;
-  className?: string;
-  delay?: number;
-}
+interface AnimatedMetricProps { value: string; className?: string; delay?: number; }
 
-export function AnimatedMetric({ value, className, delay = 0 }: AnimatedMetricProps) {
+function useViewportAnimation(target: number | null, delay: number) {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-10%" });
-  const reduceMotion = useReducedMotion();
-  const match = value.match(/-?\d+(?:[.,]\d+)?/);
-  const target = match ? Number(match[0].replace(",", ".")) : null;
-  const decimals = match?.[0].includes(".") || match?.[0].includes(",") ? 1 : 0;
-  const prefix = match ? value.slice(0, match.index) : "";
-  const suffix = match ? value.slice((match.index ?? 0) + match[0].length) : "";
-  const [displayValue, setDisplayValue] = useState(reduceMotion && target !== null ? target : 0);
+  const [value, setValue] = useState(0);
 
   useEffect(() => {
-    if (!isInView || target === null) return;
+    if (!ref.current || target === null) return;
+    let frame = 0;
+    let started = false;
 
-    if (reduceMotion) {
-      setDisplayValue(target);
-      return;
-    }
+    const animateValue = () => {
+      if (started) return;
+      started = true;
+      const startTime = performance.now() + delay * 1000;
+      const tick = (now: number) => {
+        if (now < startTime) { frame = requestAnimationFrame(tick); return; }
+        const progress = Math.min((now - startTime) / 900, 1);
+        setValue(target * (1 - Math.pow(1 - progress, 3)));
+        if (progress < 1) frame = requestAnimationFrame(tick);
+      };
+      frame = requestAnimationFrame(tick);
+    };
 
-    const controls = animate(0, target, {
-      duration: 0.9,
-      delay,
-      ease: [0.22, 1, 0.36, 1],
-      onUpdate: setDisplayValue,
-    });
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) { animateValue(); observer.disconnect(); }
+    }, { threshold: 0.15 });
+    observer.observe(ref.current);
+    return () => { observer.disconnect(); cancelAnimationFrame(frame); };
+  }, [delay, target]);
 
-    return () => controls.stop();
-  }, [delay, isInView, reduceMotion, target]);
-
-  if (target === null) return <span className={className}>{value}</span>;
-
-  const formatted = decimals ? displayValue.toFixed(decimals) : Math.round(displayValue).toString();
-
-  return (
-    <span ref={ref} className={className} aria-label={value}>
-      <span aria-hidden="true">{prefix}{formatted}{suffix}</span>
-    </span>
-  );
+  return { ref, value };
 }
 
-interface AnimatedProgressProps {
-  value: number;
-  className: string;
-  delay?: number;
+export function AnimatedMetric({ value: text, className, delay = 0 }: AnimatedMetricProps) {
+  const match = text.match(/-?\d+(?:[.,]\d+)?/);
+  const target = match ? Number(match[0].replace(",", ".")) : null;
+  const decimals = match?.[0].includes(".") || match?.[0].includes(",") ? 1 : 0;
+  const prefix = match ? text.slice(0, match.index) : "";
+  const suffix = match ? text.slice((match.index ?? 0) + match[0].length) : "";
+  const { ref, value } = useViewportAnimation(target, delay);
+  if (target === null) return <span className={className}>{text}</span>;
+  const formatted = decimals ? value.toFixed(decimals) : Math.round(value).toString();
+  return <span ref={ref} className={className} aria-label={text}><span aria-hidden="true">{prefix}{formatted}{suffix}</span></span>;
 }
+
+interface AnimatedProgressProps { value: number; className: string; delay?: number; }
 
 export function AnimatedProgress({ value, className, delay = 0 }: AnimatedProgressProps) {
-  const reduceMotion = useReducedMotion();
+  const { ref, value: progress } = useViewportAnimation(value, delay);
+  return <span ref={ref} className={className} aria-hidden="true" style={{ display: "block", width: "100%", transform: `scaleX(${progress / 100})`, transformOrigin: "left center", willChange: "transform" }} />;
+}
 
+export function AnimatedGauge({ value, className = "text-emerald-500", delay = 0 }: { value: number; className?: string; delay?: number }) {
+  const { ref, value: progress } = useViewportAnimation(value, delay);
+  const circumference = 169.6;
   return (
-    <motion.div
+    <circle
+      ref={ref as unknown as React.RefObject<SVGCircleElement>}
+      cx="32"
+      cy="32"
+      r="27"
+      stroke="currentColor"
+      strokeWidth="4"
+      strokeDasharray={circumference}
+      strokeDashoffset={circumference - (circumference * Math.min(progress, 100)) / 100}
+      strokeLinecap="round"
       className={className}
-      style={{ width: `${value}%`, transformOrigin: "left" }}
-      initial={reduceMotion ? false : { scaleX: 0 }}
-      whileInView={{ scaleX: 1 }}
-      viewport={{ once: true, amount: 0.65 }}
-      transition={{ duration: reduceMotion ? 0 : 0.9, delay, ease: [0.22, 1, 0.36, 1] }}
+      fill="transparent"
     />
   );
 }

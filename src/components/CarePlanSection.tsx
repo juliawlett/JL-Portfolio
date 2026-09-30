@@ -20,6 +20,7 @@ import {
   DollarSign,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { AnimatedMetric } from "./AnimatedMetric";
 
 export default function CarePlanSection() {
   const [activeTab, setActiveTab] = useState<"included" | "workflow" | "comparison" | "pricing">(
@@ -66,8 +67,8 @@ export default function CarePlanSection() {
         </motion.div>
 
         {/* Barra de Abas Interativas */}
-        <div className="flex justify-center mb-6 sm:mb-8 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none">
-          <div className="inline-flex p-1.5 rounded-2xl bg-slate-100 dark:bg-dark-surface border border-light-border dark:border-dark-border shadow-inner gap-1">
+        <div className="mb-6 flex justify-center sm:mb-8">
+          <div className="grid w-full max-w-5xl grid-cols-2 gap-1.5 rounded-2xl border border-light-border bg-slate-100 p-1.5 shadow-inner dark:border-dark-border dark:bg-dark-surface lg:grid-cols-4">
             {tabs.map((tab) => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
@@ -76,7 +77,7 @@ export default function CarePlanSection() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`relative flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 whitespace-nowrap cursor-pointer ${
+                  className={`relative flex min-h-14 items-center justify-center gap-2 px-2 py-2.5 text-center rounded-xl text-[11px] sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
                     isActive
                       ? "text-slate-900 dark:text-white shadow-sm bg-white dark:bg-dark-bg"
                       : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
@@ -189,7 +190,7 @@ export default function CarePlanSection() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.35, ease: "easeOut" }}
-                className="card-clean rounded-3xl p-6 sm:p-10 border border-light-border dark:border-dark-border shadow-md"
+                className="card-clean min-w-0 rounded-3xl p-4 sm:p-10 border border-light-border dark:border-dark-border shadow-md"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                   <div className="lg:col-span-6 space-y-4">
@@ -392,9 +393,10 @@ export default function CarePlanSection() {
 
                     <div className="mt-5 flex items-baseline gap-1">
                       <span className="text-sm font-medium text-slate-500 dark:text-slate-400">R$</span>
-                      <span className="font-heading text-4xl font-extrabold text-slate-900 dark:text-white">
-                        {care.priceTogether}
-                      </span>
+                      <AnimatedMetric
+                        value={care.priceTogether.toString()}
+                        className="font-heading text-4xl font-extrabold text-slate-900 dark:text-white"
+                      />
                       <span className="text-sm font-medium text-slate-500 dark:text-slate-400">/mês</span>
                     </div>
                     <p className="text-[11px] text-slate-400 mt-1">Fidelidade de 6 ou 12 meses</p>
@@ -438,9 +440,11 @@ export default function CarePlanSection() {
 
                     <div className="mt-5 flex items-baseline gap-1">
                       <span className="text-sm font-medium text-slate-500 dark:text-slate-400">R$</span>
-                      <span className="font-heading text-4xl font-extrabold text-slate-900 dark:text-white">
-                        {care.priceLater}
-                      </span>
+                      <AnimatedMetric
+                        value={care.priceLater.toString()}
+                        className="font-heading text-4xl font-extrabold text-slate-900 dark:text-white"
+                        delay={0.08}
+                      />
                       <span className="text-sm font-medium text-slate-500 dark:text-slate-400">/mês</span>
                     </div>
                     <p className="text-[11px] text-slate-400 mt-1">Sem permanência mínima</p>
