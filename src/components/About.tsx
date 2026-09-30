@@ -101,7 +101,7 @@ export default function About() {
               className="relative w-full max-w-[400px] lg:max-w-[420px] aspect-[4/4.6] rounded-3xl overflow-hidden shadow-2xl shadow-slate-900/10 dark:shadow-black/50 border border-slate-200/80 dark:border-white/10 group bg-slate-100 dark:bg-dark-surface"
             >
               <Image
-                src="/images/foto-julia.png"
+                src="/images/profile/foto-julia.webp"
                 alt="Júlia Letícia - Desenvolvedora Web & UI/UX"
                 fill
                 className="object-cover object-top transition-transform duration-700 group-hover:scale-105"

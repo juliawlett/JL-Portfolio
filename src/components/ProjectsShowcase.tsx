@@ -74,7 +74,7 @@ export default function ProjectsShowcase() {
           {visibleProjects.map((project: Project, index: number) => (
             <motion.article
               key={project.slug}
-              initial={{ opacity: 0, y: 30 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.55, delay: (index % 3) * 0.1, ease: "easeOut" }}
@@ -118,7 +118,6 @@ export default function ProjectsShowcase() {
                         src={project.image}
                         alt={`Print oficial do site ${project.title}`}
                         fill
-                        priority={index === 0}
                         quality={70}
                         className="object-cover object-top transform group-hover:scale-105 transition-transform duration-500 ease-out"
                         sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1200px) 50vw, 33vw"
@@ -171,6 +170,7 @@ export default function ProjectsShowcase() {
                 <div className="pt-4 border-t border-light-border dark:border-white/[0.07] flex items-center justify-between gap-3">
                   <Link
                     href={`/projetos/${project.slug}`}
+                    prefetch
                     className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-brand-600 dark:text-brand-400 hover:underline transition-colors"
                   >
                     <span>Estudo de caso</span>

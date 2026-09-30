@@ -563,7 +563,7 @@ Vi as condições no seu portfólio e gostaria de verificar sua disponibilidade 
                       <div className="p-4 rounded-2xl bg-brand-50/50 dark:bg-brand-950/20 border border-brand-100 dark:border-brand-900/30 flex items-center gap-3.5 text-xs text-slate-700 dark:text-slate-300">
                         <div className="relative w-11 h-11 rounded-full overflow-hidden shrink-0 border border-brand-200 dark:border-brand-800">
                           <Image
-                            src="/images/foto-julia.png"
+                            src="/images/profile/foto-julia.webp"
                             alt="Júlia Letícia"
                             width={44}
                             height={44}

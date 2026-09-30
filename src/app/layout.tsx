@@ -3,6 +3,7 @@ import { Inter, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/data/config";
 import { ThemeProvider } from "@/context/ThemeContext";
+import InitialLoader from "@/components/InitialLoader";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -96,7 +97,7 @@ export default function RootLayout({
     "@id": `${baseUrl}/#organization`,
     name: "Júlia Letícia · Desenvolvimento Web",
     url: baseUrl,
-    image: `${baseUrl}/images/new-projects/db-cursos-desktop.png`,
+    image: `${baseUrl}/images/cases/desktop/db-cursos.webp`,
     description:
       "Desenvolvimento de landing pages de alta conversão e sites institucionais modernos com foco em resultados para empresas.",
     telephone: "+5565981290370",
@@ -212,6 +213,7 @@ export default function RootLayout({
       </head>
       <body className="bg-light-bg text-light-text dark:bg-dark-bg dark:text-dark-text antialiased min-h-screen selection:bg-brand-100 dark:selection:bg-brand-900/60 selection:text-brand-900 dark:selection:text-white transition-colors duration-200">
         <ThemeProvider>
+          <InitialLoader />
           {children}
         </ThemeProvider>
       </body>

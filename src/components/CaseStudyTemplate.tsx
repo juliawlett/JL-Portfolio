@@ -172,17 +172,18 @@ export default function CaseStudyTemplate({
                       alt={`Versão Desktop do site ${project.title} no MacBook Pro`}
                       fill
                       priority
+                      fetchPriority="high"
                       className="object-cover object-top"
                       sizes="(max-width: 1024px) 100vw, 850px"
                     />
                   </div>
 
                   {/* Moldura oficial transparente Apple MacBook Pro */}
-                  <Image
-                    src="/images/mockup/mockup-apple-macbook-pro-16-2021-transparent.webp"
+                  <img
+                    src="/images/mockups/macbook-pro-16.webp"
                     alt="Apple MacBook Pro Mockup"
-                    fill
-                    unoptimized
+                    width={800}
+                    height={489}
                     className="pointer-events-none select-none z-10 object-contain"
                   />
                 </div>
@@ -204,16 +205,16 @@ export default function CaseStudyTemplate({
                       alt={`Versão Mobile do site ${project.title} no iPhone 16`}
                       fill
                       className="object-cover object-top"
-                      sizes="220px"
+                      sizes="(max-width: 640px) 144px, 208px"
                     />
                   </div>
 
                   {/* Moldura oficial transparente Apple iPhone */}
-                  <Image
-                    src="/images/mockup/mockup-apple-iphone-18-pro-2026-transparent.webp"
+                  <img
+                    src="/images/mockups/iphone-18-pro.webp"
                     alt="Apple iPhone Mockup"
-                    fill
-                    unoptimized
+                    width={389}
+                    height={800}
                     className="pointer-events-none select-none z-10 object-contain"
                   />
                 </div>

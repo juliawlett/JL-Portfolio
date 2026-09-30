@@ -57,7 +57,7 @@ export default function Avatar3D() {
           {/* Card interno com a foto do Avatar */}
           <div className="relative w-full h-full rounded-2xl overflow-hidden bg-slate-100 dark:bg-dark-surface">
             <Image
-              src="/images/foto-julia.png"
+              src="/images/profile/foto-julia.webp"
               alt="Júlia Letícia - Desenvolvedora Web & Web Designer"
               fill
               className="object-cover object-top transform transition-transform duration-700 group-hover:scale-105"

@@ -54,16 +54,17 @@ export default function DynamicPrototype() {
             priority
             className="object-cover object-top"
             sizes="(max-width: 1024px) 100vw, 850px"
+            data-loader-critical
           />
         </div>
 
         {/* MOLDURA TRANSPARENTE OFICIAL APPLE MACBOOK PRO 16" */}
         <Image
-          src="/images/mockup/mockup-apple-macbook-pro-16-2021-transparent.webp"
+          src="/images/mockups/macbook-pro-16.webp"
           alt="Apple MacBook Pro 16 Mockup"
           fill
-          priority
           className="pointer-events-none select-none z-10 object-contain"
+          data-loader-critical
         />
 
         {/* ========================================================================= */}
@@ -84,9 +85,9 @@ export default function DynamicPrototype() {
               src={currentProject.imageMobile || currentProject.image}
               alt={`Site de ${currentProject.title} no iPhone`}
               fill
-              priority
               className="object-cover object-top"
               sizes="(max-width: 640px) 100px, 160px"
+              data-loader-critical
             />
 
             {/* BARRA INFERIOR DE GESTO DA APPLE (HOME INDICATOR) */}
@@ -95,11 +96,11 @@ export default function DynamicPrototype() {
 
           {/* MOLDURA TRANSPARENTE OFICIAL APPLE IPHONE 18 PRO */}
           <Image
-            src="/images/mockup/mockup-apple-iphone-18-pro-2026-transparent.webp"
+            src="/images/mockups/iphone-18-pro.webp"
             alt="Apple iPhone Mockup"
             fill
-            priority
             className="pointer-events-none select-none z-10 object-contain"
+            data-loader-critical
           />
         </div>
       </div>
