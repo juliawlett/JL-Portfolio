@@ -20,7 +20,7 @@ export const siteConfig: SiteConfig = {
   // 'false': exibe os valores normais de tabela limpos.
   // =========================================================================
   promo: {
-    isActive: false,
+    isActive: true,
     badgeText: "CONDIÇÃO PROMOCIONAL POR TEMPO LIMITADO",
     bannerText: "⚡ Condição Especial Ativa: Garanta sua página com desconto promocional e 1º ano de domínio .com.br incluso!",
     urgencyNotice: "Valores promocionais válidos até o preenchimento da agenda mensal.",
