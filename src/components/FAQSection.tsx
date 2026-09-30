@@ -71,6 +71,7 @@ export default function FAQSection() {
                   type="button"
                   onClick={() => toggleFAQ(index)}
                   aria-expanded={isOpen}
+                  aria-controls={`faq-answer-${index}`}
                   className="w-full min-h-[88px] sm:min-h-[96px] p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer select-none group"
                 >
                   <span
@@ -98,6 +99,7 @@ export default function FAQSection() {
                   {isOpen && (
                     <motion.div
                       key="answer-content"
+                      id={`faq-answer-${index}`}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}

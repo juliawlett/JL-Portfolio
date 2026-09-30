@@ -83,9 +83,9 @@ export default function StatsBar() {
                       <p className="text-[11px] uppercase tracking-wider font-bold text-slate-400 dark:text-slate-400">
                         {stat.label}
                       </p>
-                      <h3 className="font-heading text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight flex items-baseline gap-2">
+                      <p className="font-heading text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight flex items-baseline gap-2">
                         <AnimatedMetric value={stat.value} delay={index * 0.06} className={cfg.accentColor} />
-                      </h3>
+                      </p>
                     </div>
 
                     {/* Description */}

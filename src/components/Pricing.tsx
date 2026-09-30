@@ -179,7 +179,7 @@ export default function Pricing() {
 
                   {/* Lista de Recursos / Benefícios Inclusos */}
                   <div className="space-y-2.5 pt-1">
-                    <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                    <p className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                       O que está incluso:
                     </p>
                     <ul className="space-y-2">
@@ -282,7 +282,7 @@ export default function Pricing() {
 
               {/* Coluna 2: Recursos e Tecnologias Inclusas (4 cols) */}
               <div className="lg:col-span-4 border-t lg:border-t-0 lg:border-l border-slate-100 dark:border-white/[0.06] pt-6 lg:pt-0 lg:pl-8 space-y-3">
-                <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                <p className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                   O que contempla esta modalidade:
                 </p>
                 <ul className="space-y-2.5">

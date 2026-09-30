@@ -57,7 +57,7 @@ export default function ProjectsShowcase() {
                 key={cat}
                 type="button"
                 onClick={() => selectCategory(cat)}
-                className={`rounded-xl px-4 py-2 text-xs font-semibold transition-all cursor-pointer sm:text-sm ${
+                className={`min-h-11 rounded-xl px-4 py-2 text-xs font-semibold transition-all cursor-pointer sm:text-sm ${
                   activeCategory === cat
                     ? "bg-brand-600 text-white shadow-md shadow-brand-600/25 scale-105"
                     : "bg-white dark:bg-dark-card text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-white border border-light-border dark:border-dark-border"
