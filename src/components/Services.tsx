@@ -8,6 +8,7 @@ import {
   Layers,
   Sparkles,
   ArrowDown,
+  MessageCircle,
   Users,
   Clock,
   CheckCircle2,
@@ -21,9 +22,18 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { AnimatedMetric, AnimatedProgress } from "./AnimatedMetric";
+import { siteConfig } from "@/data/config";
 
 export default function Services() {
   const [activeTab, setActiveTab] = useState<"landing" | "institucional" | "redesign" | "sistemas">("landing");
+  const showPlans = siteConfig.sections.plans === "VISIVEL";
+
+  const getServiceCtaHref = (service: string) => {
+    if (showPlans) return "#planos";
+
+    const message = `Olá Júlia! Visitei seu portfólio e gostaria de solicitar um orçamento para ${service}.`;
+    return `https://wa.me/${siteConfig.profile.whatsapp}?text=${encodeURIComponent(message)}`;
+  };
 
   const tabs = [
     {
@@ -76,7 +86,7 @@ export default function Services() {
           </h2>
 
           <p className="mt-3 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-            Selecione abaixo a sua necessidade para entender o perfil de entrega, os benefícios práticos e o plano recomendado.
+            Selecione abaixo a sua necessidade para entender o perfil de entrega, os benefícios práticos e {showPlans ? "o plano recomendado." : "a melhor solução para o seu projeto."}
           </p>
         </motion.div>
 
@@ -194,11 +204,13 @@ export default function Services() {
                   {/* Ação Padronizada (h-12) */}
                   <div className="pt-2 flex flex-col sm:flex-row sm:items-center gap-4">
                     <a
-                      href="#planos"
+                      href={getServiceCtaHref("uma landing page")}
+                      target={showPlans ? undefined : "_blank"}
+                      rel={showPlans ? undefined : "noopener noreferrer"}
                       className="h-12 px-6 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs sm:text-sm shadow-md shadow-brand-600/20 hover:shadow-lg hover:shadow-brand-600/30 transition-all inline-flex items-center justify-center gap-2 cursor-pointer active:scale-[0.99] shrink-0"
                     >
-                      <span>Ver valores do Plano essencial</span>
-                      <ArrowDown className="w-4 h-4" />
+                      <span>{showPlans ? "Ver valores do Plano essencial" : "Solicitar orçamento"}</span>
+                      {showPlans ? <ArrowDown className="w-4 h-4" /> : <MessageCircle className="w-4 h-4" />}
                     </a>
                     <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
@@ -323,11 +335,13 @@ export default function Services() {
 
                   <div className="pt-2 flex flex-col sm:flex-row sm:items-center gap-4">
                     <a
-                      href="#planos"
+                      href={getServiceCtaHref("um site institucional")}
+                      target={showPlans ? undefined : "_blank"}
+                      rel={showPlans ? undefined : "noopener noreferrer"}
                       className="h-12 px-6 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs sm:text-sm shadow-md shadow-brand-600/20 hover:shadow-lg hover:shadow-brand-600/30 transition-all inline-flex items-center justify-center gap-2 cursor-pointer active:scale-[0.99] shrink-0"
                     >
-                      <span>Ver valores do Plano profissional</span>
-                      <ArrowDown className="w-4 h-4" />
+                      <span>{showPlans ? "Ver valores do Plano profissional" : "Solicitar orçamento"}</span>
+                      {showPlans ? <ArrowDown className="w-4 h-4" /> : <MessageCircle className="w-4 h-4" />}
                     </a>
                     <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
@@ -453,11 +467,13 @@ export default function Services() {
 
                   <div className="pt-2 flex flex-col sm:flex-row sm:items-center gap-4">
                     <a
-                      href="#planos"
+                      href={getServiceCtaHref("um redesign de site")}
+                      target={showPlans ? undefined : "_blank"}
+                      rel={showPlans ? undefined : "noopener noreferrer"}
                       className="h-12 px-6 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs sm:text-sm shadow-md shadow-brand-600/20 hover:shadow-lg hover:shadow-brand-600/30 transition-all inline-flex items-center justify-center gap-2 cursor-pointer active:scale-[0.99] shrink-0"
                     >
-                      <span>Ver opções de planos para redesign</span>
-                      <ArrowDown className="w-4 h-4" />
+                      <span>{showPlans ? "Ver opções de planos para redesign" : "Solicitar orçamento"}</span>
+                      {showPlans ? <ArrowDown className="w-4 h-4" /> : <MessageCircle className="w-4 h-4" />}
                     </a>
                     <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
@@ -581,11 +597,13 @@ export default function Services() {
 
                   <div className="pt-2 flex flex-col sm:flex-row sm:items-center gap-4">
                     <a
-                      href="#planos"
+                      href={getServiceCtaHref("um sistema web sob medida")}
+                      target={showPlans ? undefined : "_blank"}
+                      rel={showPlans ? undefined : "noopener noreferrer"}
                       className="h-12 px-6 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs sm:text-sm shadow-md shadow-brand-600/20 hover:shadow-lg hover:shadow-brand-600/30 transition-all inline-flex items-center justify-center gap-2 cursor-pointer active:scale-[0.99] shrink-0"
                     >
-                      <span>Ver detalhes de Sistemas sob medida</span>
-                      <ArrowDown className="w-4 h-4" />
+                      <span>{showPlans ? "Ver detalhes de Sistemas sob medida" : "Solicitar orçamento"}</span>
+                      {showPlans ? <ArrowDown className="w-4 h-4" /> : <MessageCircle className="w-4 h-4" />}
                     </a>
                     <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
