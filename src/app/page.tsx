@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import StatsBar from "@/components/StatsBar";
 import ProjectsShowcase from "@/components/ProjectsShowcase";
+import { siteConfig } from "@/data/config";
 import dynamic from "next/dynamic";
 
 const Services = dynamic(() => import("@/components/Services"));
@@ -16,6 +17,8 @@ const ContactFunnel = dynamic(() => import("@/components/ContactFunnel"));
 const Footer = dynamic(() => import("@/components/Footer"));
 
 export default function Home() {
+  const showPlans = siteConfig.sections.plans === "VISIVEL";
+
   return (
     <main className="min-h-screen flex flex-col bg-light-bg text-light-text dark:bg-dark-bg dark:text-dark-text transition-colors duration-200">
 
@@ -25,8 +28,8 @@ export default function Home() {
       <StatsBar />
       <ProjectsShowcase />
       <Services />
-      <Pricing />
-      <CarePlanSection />
+      {showPlans && <Pricing />}
+      {showPlans && <CarePlanSection />}
       <Methodology />
       <AntiTemplate />
       <About />
