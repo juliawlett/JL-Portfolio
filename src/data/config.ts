@@ -369,12 +369,10 @@ export const siteConfig: SiteConfig = {
     {
       question: "Qual o prazo médio para o meu site ficar pronto?",
       answer: "O prazo depende do plano escolhido: de 3 a 5 dias úteis para o Plano essencial, de 5 a 8 dias úteis para o Plano profissional e de 8 a 15 dias úteis para o Plano avançado. O prazo começa a contar após o briefing inicial e o envio dos materiais pelo cliente.",
-      relatedToPlans: true,
     },
     {
       question: "O domínio .com.br está realmente incluso?",
       answer: "Sim! Como benefício especial, todos os planos fechados incluem o 1º ano do domínio .com.br como bônus gratuito. O domínio fica 100% registrado no seu nome ou no da sua empresa.",
-      relatedToPlans: true,
     },
     {
       question: "Como funciona o pagamento?",
@@ -387,7 +385,6 @@ export const siteConfig: SiteConfig = {
     {
       question: "E se eu precisar alterar um preço, foto ou texto depois que o site for publicado?",
       answer: "Você nunca fica na mão. Temos o 'Plano de cuidado contínuo' por apenas R$ 130/mês (contratado com o site), que cobre até 4 manutenções mensais, renovação do domínio e suporte prioritário no WhatsApp. Caso prefira sem mensalidade, você também pode solicitar ajustes avulsos a partir de R$ 50.",
-      relatedToPlans: true,
     },
     {
       question: "O site vai funcionar perfeitamente no celular?",
