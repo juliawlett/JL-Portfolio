@@ -12,6 +12,8 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
 
+  const showPlans = siteConfig.sections.plans === "VISIVEL";
+
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 120,
@@ -30,7 +32,7 @@ export default function Navbar() {
   const navLinks = [
     { name: "Cases", href: "/#cases", sectionId: "cases" },
     { name: "Serviços", href: "/#servicos", sectionId: "servicos" },
-    { name: "Planos e preços", href: "/#planos", sectionId: "planos" },
+    ...(showPlans ? [{ name: "Planos e preços", href: "/#planos", sectionId: "planos" }] : []),
     { name: "Como funciona", href: "/#metodo", sectionId: "metodo" },
     { name: "Sobre", href: "/#sobre", sectionId: "sobre" },
     { name: "Dúvidas", href: "/#faq", sectionId: "faq" },
