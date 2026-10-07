@@ -5,7 +5,9 @@ import { siteConfig } from "@/data/config";
 import { Sparkles, ArrowRight } from "lucide-react";
 
 export default function PromoBanner() {
-  if (!siteConfig.promo.isActive) return null;
+  const showPlans = siteConfig.sections.plans === "VISIVEL";
+
+  if (!siteConfig.promo.isActive || !showPlans) return null;
 
   return (
     <div className="relative z-50 bg-brand-50 dark:bg-brand-950/40 border-b border-brand-200 dark:border-brand-900/60 px-4 py-2.5 text-xs sm:text-sm text-center text-brand-900 dark:text-brand-200 transition-colors">

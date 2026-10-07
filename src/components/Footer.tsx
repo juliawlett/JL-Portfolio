@@ -6,6 +6,8 @@ import { siteConfig } from "@/data/config";
 import { ArrowUp, MessageCircle } from "lucide-react";
 
 export default function Footer() {
+  const showPlans = siteConfig.sections.plans === "VISIVEL";
+
   const whatsappUrl = `https://wa.me/${siteConfig.profile.whatsapp}?text=${encodeURIComponent(
     "Olá Júlia! Visitei seu portfólio e gostaria de conversar sobre a criação de um site para o meu negócio."
   )}`;
@@ -40,7 +42,9 @@ export default function Footer() {
             <ul className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-medium text-slate-600 dark:text-slate-400 sm:justify-center lg:justify-start">
               <li><a href="/#cases" className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Cases</a></li>
               <li><a href="/#servicos" className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Serviços</a></li>
-              <li><a href="/#planos" className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Planos</a></li>
+              {showPlans && (
+                <li><a href="/#planos" className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Planos</a></li>
+              )}
               <li><a href="/#metodo" className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Processo</a></li>
               <li><a href="/#faq" className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Dúvidas</a></li>
             </ul>

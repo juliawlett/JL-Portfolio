@@ -66,6 +66,9 @@ export interface SiteConfig {
     linkedin?: string;
     instagram?: string;
   };
+  sections: {
+    plans: "VISIVEL" | "OCULTO";
+  };
   promo: {
     isActive: boolean;
     badgeText: string;
@@ -85,5 +88,6 @@ export interface SiteConfig {
   faqs: Array<{
     question: string;
     answer: string;
+    relatedToPlans?: boolean;
   }>;
 }
