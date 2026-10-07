@@ -88,6 +88,5 @@ export interface SiteConfig {
   faqs: Array<{
     question: string;
     answer: string;
-    relatedToPlans?: boolean;
   }>;
 }
