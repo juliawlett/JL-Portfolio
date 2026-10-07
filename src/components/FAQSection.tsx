@@ -6,11 +6,6 @@ import { ChevronDown, HelpCircle, MessageCircle, ArrowUpRight } from "lucide-rea
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function FAQSection() {
-  const showPlans = siteConfig.sections.plans === "VISIVEL";
-  const visibleFaqs = showPlans
-    ? siteConfig.faqs
-    : siteConfig.faqs.filter((faq) => !faq.relatedToPlans);
-
   // Todas as perguntas iniciam fechadas ao abrir o site
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -55,7 +50,7 @@ export default function FAQSection() {
 
         {/* Grade 100% Simétrica em 2 Colunas: todos os cards fechados possuem o mesmo tamanho exato */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 items-start">
-          {visibleFaqs.map((faq, index) => {
+          {siteConfig.faqs.map((faq, index) => {
             const isOpen = openIndex === index;
 
             return (
